@@ -1,12 +1,22 @@
 # 📋 Task Manager - Backend
 
-Backend da aplicação de gerenciamento de tarefas desenvolvido para fornecer uma API robusta e escalável.
+Backend da aplicação de gerenciamento de tarefas desenvolvido em **Phoenix Elixir** para fornecer uma API robusta e escalável.
 
-##  Como executar
+## 🚀 Tecnologias
 
-### Pré-requisitos
+- **Elixir** - Linguagem de programação funcional
+- **Phoenix Framework** - Framework web para Elixir
+- **PostgreSQL** - Banco de dados relacional
+- **Ecto** - ORM para Elixir
+- **Tailwind CSS** - Framework CSS utilitário
+- **Docker** - Containerização da aplicação
+
+## 📋 Pré-requisitos
+
 - Docker
 - Docker Compose
+
+## ‍♂️ Como executar
 
 ### Executando a aplicação
 
@@ -16,6 +26,8 @@ Para iniciar a aplicação, execute no terminal:
 docker-compose up --build
 ```
 
+A aplicação estará disponível em: `http://localhost:4000`
+
 ### Parando a aplicação
 
 Para parar e remover todos os containers e volumes:
@@ -24,12 +36,88 @@ Para parar e remover todos os containers e volumes:
 docker-compose down -v
 ```
 
+### Desenvolvimento local
+
+Para desenvolvimento local sem Docker:
+
+```bash
+# Instalar dependências
+mix deps.get
+
+# Configurar banco de dados
+mix ecto.setup
+
+# Iniciar servidor
+mix phx.server
+```
+
 ## 📁 Estrutura do projeto
 
 ```
 task_manager/
-├── README.md
-└── docker-compose.yml
+├── assets/                 # Assets frontend (CSS, JS, Tailwind)
+│   ├── css/
+│   ├── js/
+│   ├── vendor/
+│   └── tailwind.config.js
+├── config/                 # Configurações do Phoenix
+│   ├── config.exs
+│   ├── dev.exs
+│   ├── prod.exs
+│   ├── runtime.exs
+│   └── test.exs
+├── lib/                    # Código fonte da aplicação
+│   ├── task_manager/       # Contextos e schemas
+│   ├── task_manager_web/   # Controllers, views e templates
+│   ├── task_manager.ex
+│   └── task_manager_web.ex
+├── priv/                   # Arquivos privados
+│   ├── gettext/
+│   ├── repo/              # Migrações do banco
+│   └── static/
+├── test/                   # Testes automatizados
+│   ├── support/
+│   └── task_manager_web/
+├── .formatter.exs         # Configuração do formatador
+├── .gitignore
+├── Dockerfile             # Configuração do container
+├── docker-compose.yml     # Orquestração dos serviços
+├── LICENSE
+├── mix.exs                # Configuração do projeto Mix
+├── mix.lock               # Versões fixas das dependências
+└── README.md
+```
+
+## 🔧 Comandos úteis
+
+```bash
+# Instalar dependências
+mix deps.get
+
+# Executar migrações
+mix ecto.migrate
+
+# Executar testes
+mix test
+
+# Formatar código
+mix format
+
+# Compilar assets
+mix assets.build
+
+# Acessar console interativo
+iex -S mix phx.server
+```
+
+## 🌍 Variáveis de ambiente
+
+Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
+
+```env
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=sua_senha
+POSTGRES_DATABASE=task_manager_dev
 ```
 
 ## 🤝 Contribuição
